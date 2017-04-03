@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Main Activity-->
+    <string name="PLAY">Play</string>
+    <string name="tv_text">¡Adivina el Número!</string>
+    <string name="btn_text_leaderboard">Récords</string>
+    <string name="et_text">Introduce tu nombre</string>
+
+    <!--Activity game-->
+    <string name="et_text_hint">Tu respuesta</string>
+    <string name="btn_go_text">Comprobar!</string>
+    <string name="btn_restart_text">Reiniciar</string>
+    <string name="btn_home_text">Inicio</string>
+        <!--toast-->
+        <string name="text_toast">"Empezando un nuevo juego"</string>
+
+
+        <!--if (userGuess == solution)-->
+        <string name="text_congratulation">(: FELICIDADES "</string>
+        <string name="emoji"> ;) </string>
+        <string name="text_userGuess_is_the_same_solution">Tu puntuación es:</string>
+
+        <!--if (userGuess < solution && absUserGuess > 15)-->
+        <string name="text_cold_higher">FRÍO, Necesitas ir mucho más alto!! </string>
+
+        <!--if (userGuess < solution && absUserGuess < 15) -->
+        <string name="text_hot_bit_higher">CALIENTE, Necesitas ir un poquito mas alto :)</string>
+
+        <!--if (userGuess > solution && absUserGuess >= 15)-->
+        <string name="text_cold_not_so_high">FRÍO, No tan alto!!</string>
+
+        <!--if (userGuess > solution && absUserGuess < 15)-->
+        <string name="text_hot_bit_too_high">CALIENTE, Te has pasado por poco ;)</string>
+
+        <!--if (score <= 0) -->
+        <string name="text_so_bad">"Eres muy malo, mejor retirate. "</string>
+
+    
+    
+    
+    
+    
+    
+</resources>

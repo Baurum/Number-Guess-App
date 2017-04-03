@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">NumberGuess</string>
+
+
+    <!--Main activity-->
+    <string name="PLAY">Play</string>
+    <string name="tv_text">Number Guess!</string>
+    <string name="btn_text_leaderboard">Leaderboard</string>
+    <string name="et_text">Enter your name</string>
+
+    <!--Activity game-->
+    <string name="et_text_hint">Your answer</string>
+    <string name="btn_go_text">GO!</string>
+    <string name="btn_restart_text">Restart</string>
+    <string name="btn_home_text">Home</string>
+
+        <!--toast-->
+        <string name="text_toast">"Starting a new game"</string>
+
+
+        <!--if (userGuess == solution)-->
+        <string name="text_congratulation">(: CONGRATULATIONS "</string>
+        <string name="emoji"> ;) </string>
+        <string name="text_userGuess_is_the_same_solution">Your SCORE: </string>
+
+        <!--if (userGuess < solution && absUserGuess > 15)-->
+        <string name="text_cold_higher">COLD, you need to go much higher!! </string>
+
+        <!--if (userGuess < solution && absUserGuess < 15) -->
+        <string name="text_hot_bit_higher">HOT, you need to go a bit higher :)</string>
+
+        <!--if (userGuess > solution && absUserGuess >= 15)-->
+        <string name="text_cold_not_so_high">COLD, not so high!!</string>
+
+        <!--if (userGuess > solution && absUserGuess < 15)-->
+        <string name="text_hot_bit_too_high">HOT, you went only a bit too high ;)</string>
+
+        <!--if (score <= 0) -->
+        <string name="text_so_bad">"You're so bad in this game, Bye "</string>
+
+
+    <!--Activity Leaderboard-->
+
+
+</resources>

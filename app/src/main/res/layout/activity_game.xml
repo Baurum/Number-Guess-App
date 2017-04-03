@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="bau.com.numberguess.GameActivity">
+
+    <EditText android:id="@+id/et_user_guess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/et_text_hint"
+        android:layout_margin="30dp"
+        android:textAlignment="center"
+        />
+
+    <Button android:id="@+id/btn_go"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_go_text"
+        android:onClick="play"
+        android:background="@color/btn_go"
+        android:layout_margin="25dp"
+        />
+
+    <TextView android:id="@+id/tv_clue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
+
+
+    <TextView android:id="@+id/tv_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        >
+
+        <Button android:id="@+id/btn_restart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/btn_restart_text"
+            android:onClick="restart"
+            android:background="@color/btn_restart"
+            />
+
+        <Button android:id="@+id/btn_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/btn_home_text"
+            android:onClick="backHome"
+            android:background="@color/btn_home"
+            android:textColor="@color/btn_home_text"
+            />
+
+    </LinearLayout>
+
+    <TextView   android:id="@+id/tv_top_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        />
+
+    <TextView   android:id="@+id/tv_top_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        />
+
+    <TextView   android:id="@+id/tv_top_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        />
+
+    <TextView   android:id="@+id/tv_top_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        />
+
+    <TextView   android:id="@+id/tv_top_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>
