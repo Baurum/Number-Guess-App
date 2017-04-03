@@ -7,12 +7,18 @@
     <string name="tv_text">Number Guess!</string>
     <string name="btn_text_leaderboard">Leaderboard</string>
     <string name="et_text">Enter your name</string>
+    <string name="et_text_num">Enter your num</string>
+    <string name="error_not_name">"Enter your name"</string>
+    <string name="error_not_main_number">"Enter a number"</string>
+
+
 
     <!--Activity game-->
     <string name="et_text_hint">Your answer</string>
     <string name="btn_go_text">GO!</string>
     <string name="btn_restart_text">Restart</string>
     <string name="btn_home_text">Home</string>
+    <string name="error_not_number">"Enter a number"</string>
 
         <!--toast-->
         <string name="text_toast">"Starting a new game"</string>

@@ -5,12 +5,17 @@
     <string name="tv_text">¡Adivina el Número!</string>
     <string name="btn_text_leaderboard">Récords</string>
     <string name="et_text">Introduce tu nombre</string>
+    <string name="et_text_num">Introduce el número</string>
+    <string name="error_not_name">"Introduce tu nombre"</string>
+    <string name="error_not_main_number">"Introduce un número"</string>
+
 
     <!--Activity game-->
     <string name="et_text_hint">Tu respuesta</string>
     <string name="btn_go_text">Comprobar!</string>
     <string name="btn_restart_text">Reiniciar</string>
     <string name="btn_home_text">Inicio</string>
+    <string name="error_not_number">"Introduce un número"</string>
         <!--toast-->
         <string name="text_toast">"Empezando un nuevo juego"</string>
 

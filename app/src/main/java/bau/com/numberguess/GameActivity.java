@@ -22,6 +22,7 @@ public class GameActivity extends AppCompatActivity {
     private Context mContext;
 
     private String userName;
+    private int userNum;
     private EditText etUserGuess;
     private TextView tvClue;
     private TextView tvScore;
@@ -52,6 +53,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         Intent i = getIntent();
+        userNum = i.getIntExtra("num", userNum);
         userName = i.getStringExtra("name");
         Log.d("game activity", "game activity started name = " + userName);
         initApp();
@@ -99,7 +101,7 @@ public class GameActivity extends AppCompatActivity {
         tvTop5.setText(top5string);
 
         Random rn = new Random();
-        solution = rn.nextInt(101);
+        solution = rn.nextInt(Math.abs(userNum)) ;
         score = 100;
 
     }
@@ -149,7 +151,7 @@ public class GameActivity extends AppCompatActivity {
      **********************************************************************************************/
     public void restart(View view){
         Random rn = new Random();
-        solution = rn.nextInt(101);
+        solution = rn.nextInt(userNum);
         score = 100;
         etUserGuess.setText("");
         tvClue.setText("");

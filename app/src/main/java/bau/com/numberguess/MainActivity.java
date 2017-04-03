@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private Context mContext;
     private EditText etName;
     private String userName;
+    private EditText etNum;
+    private int userNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private void initApp(){
         mContext = this;
         etName = (EditText) findViewById(R.id.et_user_name);
+        etNum = (EditText) findViewById(R.id.et_user_num);
+
     }
 
     /***********************************************************************************************
@@ -36,10 +40,23 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.btn_play:
                 userName = etName.getText().toString();
-                startGame();
+                if (userName.matches("")) {
+                    etName.setError(getString(R.string.error_not_name));
+                }else if(etNum.getText().toString().matches("0")){
+                    etNum.setError(getString(R.string.error_not_main_number));
+
+                }else if(etNum.getText().toString().matches("")){
+                    etNum.setError(getString(R.string.error_not_main_number));
+
+                }else {
+                    userNumber = Integer.parseInt(etNum.getText().toString());
+                    startGame();
+                }
                 break;
             default:
                 break;
+
+
         }
     }
 
@@ -50,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(mContext, GameActivity.class);
         String tag = "name";
         i.putExtra(tag, userName );
+        String tagNum = "num";
+        i.putExtra(tagNum, userNumber);
         startActivity(i);
     }
 
