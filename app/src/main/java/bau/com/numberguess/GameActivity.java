@@ -124,17 +124,17 @@ public class GameActivity extends AppCompatActivity {
                 tvScore.setText
                         (getString(R.string.text_userGuess_is_the_same_solution)+ " " + score);
                 refreshTop();
-            } else if (userGuess < solution && absUserGuess > 15) {
-                score = score - 10;
-                tvClue.setText(getString(R.string.text_cold_higher));
-            } else if (userGuess < solution && absUserGuess < 15) {
+            } else if (userGuess < solution && absUserGuess > solution*0.15) {
                 score = score - 5;
+                tvClue.setText(getString(R.string.text_cold_higher));
+            } else if (userGuess < solution && absUserGuess < solution*0.15) {
+                score = score - 2;
                 tvClue.setText(getString(R.string.text_hot_bit_higher));
-            } else if (userGuess > solution && absUserGuess >= 15) {
-                score -= 5;
+            } else if (userGuess > solution && absUserGuess >= solution*0.15) {
+                score -= 2;
                 tvClue.setText(getString(R.string.text_cold_not_so_high));
-            } else if (userGuess > solution && absUserGuess < 15) {
-                score -= 10;
+            } else if (userGuess > solution && absUserGuess < solution*0.15) {
+                score -= 5;
                 tvClue.setText(getString(R.string.text_hot_bit_too_high));
             }
             if (score <= 0) {
