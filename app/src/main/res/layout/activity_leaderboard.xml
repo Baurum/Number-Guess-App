@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="bau.com.numberguess.Leaderboard"
+    tools:context="bau.com.numberguess.LeaderboardActivity"
     android:orientation="vertical">
 
     <TextView android:id="@+id/tv_leaderboard_top1"

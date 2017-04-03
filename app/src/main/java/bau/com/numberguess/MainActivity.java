@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      **********************************************************************************************/
     public void leaderBoard(View view ){
-        Intent ii = new Intent(mContext, Leaderboard.class);
+        Intent ii = new Intent(mContext, LeaderboardActivity.class);
         startActivity(ii);
     }
 

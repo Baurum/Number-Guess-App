@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".GameActivity" />
-        <activity android:name=".Leaderboard"></activity>
+        <activity android:name=".LeaderboardActivity"></activity>
     </application>
 
 </manifest>

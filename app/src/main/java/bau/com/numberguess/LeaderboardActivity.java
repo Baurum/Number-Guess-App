@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class Leaderboard extends AppCompatActivity {
+public class LeaderboardActivity extends AppCompatActivity {
 
     private TextView tvTop1;
     private TextView tvTop2;
@@ -27,7 +27,7 @@ public class Leaderboard extends AppCompatActivity {
     }
 
     /***********************************************************************************************
-     * Method to start the Leaderboard Activity. method to give the ranking top
+     * Method to start the LeaderboardActivity Activity. method to give the ranking top
      **********************************************************************************************/
     private void initApp(){
         tvTop1 = (TextView) findViewById(R.id.tv_leaderboard_top1);
