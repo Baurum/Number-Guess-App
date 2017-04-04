@@ -44,6 +44,9 @@
         <!--if (score <= 0) -->
         <string name="text_so_bad">"You're so bad in this game, Bye "</string>
 
+    <!--timer messages-->
+    <string name="text_end_time">END</string>
+    <string name="text_score_end_time">Your SCORE: 0</string>
 
     <!--Activity LeaderboardActivity-->
 

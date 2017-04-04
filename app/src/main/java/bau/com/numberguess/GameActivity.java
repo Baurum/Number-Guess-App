@@ -7,30 +7,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+//timer
+import android.os.CountDownTimer;
+import android.widget.Button;
 
-import java.util.ArrayList;
 import java.util.Random;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.view.Menu;
+import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class GameActivity extends AppCompatActivity {
 
     public static final String MARCOS_SHARED_PREFERENCES = "MarcosSharedPreferences";
-
     private Context mContext;
-
     private String userName;
     private int userNum;
     private EditText etUserGuess;
     private TextView tvClue;
     private TextView tvScore;
-    private TextView tvTop1;
-    private TextView tvTop2;
-    private TextView tvTop3;
-    private TextView tvTop4;
-    private TextView tvTop5;
     private int top1;
     private int top2;
     private int top3;
@@ -39,14 +44,19 @@ public class GameActivity extends AppCompatActivity {
 //    private ArrayList<Integer> topScore;
     private int solution;
     private int score;
-
 //    Top scores
     String top1string;
     String top2string;
     String top3string;
     String top4string;
     String top5string;
-
+    //Button
+    public Button go;
+    //timer
+    TextView show;
+    CountDownT timer;
+    private long startPauseTime;
+    private long pauseTime = 0L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +66,75 @@ public class GameActivity extends AppCompatActivity {
         userNum = i.getIntExtra("num", userNum);
         userName = i.getStringExtra("name");
         Log.d("game activity", "game activity started name = " + userName);
+        show = (TextView) findViewById(R.id.tv_timer);
+        timer = new CountDownT(10000,1000);
+        show.setText("10");
+        go = (Button) findViewById(R.id.btn_go);
         initApp();
+        start();
+    }
+
+    /***********************************************************************************************
+     * Method to star timer
+     **********************************************************************************************/
+    public void start (){
+        timer.start();
+    }
+
+    /***********************************************************************************************
+     * Method to stop timer
+     **********************************************************************************************/
+    public void stop() {
+        timer.cancel();
+    }
+
+//    /***********************************************************************************************
+//     * Method pause timer
+//     **********************************************************************************************/
+//    public void pause(){
+//        startPauseTime = System.currentTimeMillis();
+//    }
+
+    /***********************************************************************************************
+     * Method resume timer
+     **********************************************************************************************/
+    public void resumen(){
+        pauseTime +=  System.currentTimeMillis()-startPauseTime;
+    }
+
+    /***********************************************************************************************
+     * class timer
+     **********************************************************************************************/
+    public class CountDownT extends CountDownTimer{
+        public CountDownT (long InMilliSeconds, long TimeGap){
+            super(InMilliSeconds,TimeGap);
+        }
+
+        /*******************************************************************************************
+         * Method to show the time
+         * @param InMilliSeconds
+         ******************************************************************************************/
+        @Override
+
+        public void onTick(long InMilliSeconds) {
+
+            show.setText((InMilliSeconds/1000 + ""));
+        }
+
+        /*******************************************************************************************
+         * Method to end countDown
+        *******************************************************************************************/
+        @Override
+        public void onFinish() {
+            show.setText(getString(R.string.text_end_time));
+            tvClue.setText(getString(R.string.text_so_bad) + userName);
+            tvScore.setText(getString(R.string.text_score_end_time));
+            go.setEnabled(false);
+            InputMethodManager imm =
+                    (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(etUserGuess.getWindowToken(), 0);
+
+        }
     }
 
     /***********************************************************************************************
@@ -67,11 +145,6 @@ public class GameActivity extends AppCompatActivity {
         etUserGuess = (EditText) findViewById(R.id.et_user_guess);
         tvClue = (TextView) findViewById(R.id.tv_clue);
         tvScore = (TextView) findViewById(R.id.tv_score);
-        tvTop1 = (TextView) findViewById(R.id.tv_top_1);
-        tvTop2 = (TextView) findViewById(R.id.tv_top_2);
-        tvTop3 = (TextView) findViewById(R.id.tv_top_3);
-        tvTop4 = (TextView) findViewById(R.id.tv_top_4);
-        tvTop5 = (TextView) findViewById(R.id.tv_top_5);
 
         // Read from shared preferences
         SharedPreferences prefs = getSharedPreferences(MARCOS_SHARED_PREFERENCES, MODE_PRIVATE);
@@ -94,12 +167,6 @@ public class GameActivity extends AppCompatActivity {
         top4 = Integer.parseInt(parts4[1]);
         top5 = Integer.parseInt(parts5[1]);
 
-        tvTop1.setText(top1string);
-        tvTop2.setText(top2string);
-        tvTop3.setText(top3string);
-        tvTop4.setText(top4string);
-        tvTop5.setText(top5string);
-
         Random rn = new Random();
         solution = rn.nextInt(Math.abs(userNum)) ;
         score = 100;
@@ -114,16 +181,19 @@ public class GameActivity extends AppCompatActivity {
         if (etUserGuess.getText().toString().equals("")) {
             etUserGuess.setError("Enter a number");
         } else {
-
             int userGuess = Integer.parseInt(etUserGuess.getText().toString());
             int absUserGuess = Math.abs(userGuess - solution);
-
             if (userGuess == solution) {
+                stop();
                 tvClue.setText
                   (getString(R.string.text_congratulation) + userName + getString(R.string.emoji));
                 tvScore.setText
                         (getString(R.string.text_userGuess_is_the_same_solution)+ " " + score);
+                InputMethodManager imm =
+                        (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(etUserGuess.getWindowToken(), 0);
                 refreshTop();
+                go.setEnabled(false);
             } else if (userGuess < solution && absUserGuess > userNum*0.15) {
                 score = score - 5;
                 tvClue.setText(getString(R.string.text_cold_higher));
@@ -136,9 +206,14 @@ public class GameActivity extends AppCompatActivity {
             } else if (userGuess > solution && absUserGuess < userNum*0.15) {
                 score -= 5;
                 tvClue.setText(getString(R.string.text_hot_bit_too_high));
-            } 
+            }
             if (score <= 0) {
                 tvClue.setText(getString(R.string.text_so_bad) + userName);
+                go.setEnabled(false);
+                InputMethodManager imm =
+                        (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(etUserGuess.getWindowToken(), 0);
+
             }
 
         }
@@ -157,15 +232,9 @@ public class GameActivity extends AppCompatActivity {
         tvClue.setText("");
         tvScore.setText("");
         Toast.makeText(mContext, getString(R.string.text_toast), Toast.LENGTH_SHORT).show();
-//        ArrayList<String> arrayPrueba = new ArrayList<>();
-//        arrayPrueba.add("Marcos");
-//        arrayPrueba.add("Jose");
-//        for (int i = 0; i < arrayPrueba.size(); i++){
-//            System.out.println(arrayPrueba.get(i));
-//        }
-//        for (String element: arrayPrueba){
-//            System.out.println(element);
-//        }
+        resumen();
+        start();
+        go.setEnabled(true);
     }
 
     /***********************************************************************************************
@@ -240,11 +309,7 @@ public class GameActivity extends AppCompatActivity {
             top5string = userName + ": " + String.valueOf(top5);
         }
         editor.apply();
-        tvTop1.setText(top1string);
-        tvTop2.setText(top2string);
-        tvTop3.setText(top3string);
-        tvTop4.setText(top4string);
-        tvTop5.setText(top5string);
+
     }
 
 }

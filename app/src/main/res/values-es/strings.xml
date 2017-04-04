@@ -39,7 +39,9 @@
 
         <!--if (score <= 0) -->
         <string name="text_so_bad">"Eres muy malo, mejor retirate. "</string>
-
+    <!--timer messages-->
+    <string name="text_end_time">Se acabó el tiempo</string>
+    <string name="text_score_end_time">Tú puntuación: 0</string>
     
     
     

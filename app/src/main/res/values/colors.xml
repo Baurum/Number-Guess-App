@@ -15,6 +15,7 @@
     <color name="btn_restart">#0BFF00</color>
     <color name="btn_home">#0300FF</color>
     <color name="btn_home_text">#FFFFFF</color>
+    <color name="tv_timer">#FF0000</color>
 
 
     <!--Activity LeaderboardActivity-->
