@@ -92,13 +92,13 @@ public class GameActivity extends AppCompatActivity {
         String dificult = userDificult.substring(0,2);
 
         if (dificult.equals("30")){
-            score =  500;
+            score =  userNum + 500;
         }
         if (dificult.equals("40")){
-            score = 400;
+            score = userNum + 400;
         }
         if (dificult.equals("50")){
-            score = 300;
+            score = userNum + 300;
         }
     }
 
