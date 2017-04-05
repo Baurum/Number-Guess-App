@@ -16,6 +16,7 @@
     <color name="btn_home">#0300FF</color>
     <color name="btn_home_text">#FFFFFF</color>
     <color name="tv_timer">#FF0000</color>
+    <color name="tv_last_answer">#FF0000</color>
 
 
     <!--Activity LeaderboardActivity-->

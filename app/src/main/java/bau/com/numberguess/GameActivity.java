@@ -58,6 +58,17 @@ public class GameActivity extends AppCompatActivity {
     private long startPauseTime;
     private long pauseTime = 0L;
 
+    //User second
+    private int userSecondsNumber;
+    private String userSecond;
+
+    //User dificult
+    private String userDificult;
+
+    //last answe
+    private TextView tvUserLastAnswer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,13 +76,44 @@ public class GameActivity extends AppCompatActivity {
         Intent i = getIntent();
         userNum = i.getIntExtra("num", userNum);
         userName = i.getStringExtra("name");
+        userSecond = i.getStringExtra("sec");
+        userDificult = i.getStringExtra("sec");
+        getUserSeconds(userSecond);
+        getUserDificult(userDificult);
         Log.d("game activity", "game activity started name = " + userName);
         show = (TextView) findViewById(R.id.tv_timer);
-        timer = new CountDownT(10000,1000);
-        show.setText("10");
+        timer = new CountDownT(userSecondsNumber*1000,1000);
+        show.setText(String.valueOf(userSecondsNumber));
         go = (Button) findViewById(R.id.btn_go);
         initApp();
         start();
+    }
+
+
+    /***********************************************************************************************
+     * Method to get the user dificult
+     **********************************************************************************************/
+    private void getUserDificult(String userDificult){
+        String dificult = userDificult.substring(0,2);
+
+        if (dificult.equals("30")){
+            score =  1000;
+        }
+        if (dificult.equals("40")){
+            score = 500;
+        }
+        if (dificult.equals("50")){
+            score = 250;
+        }
+    }
+
+    /***********************************************************************************************
+     * Method to get the seconds user
+     **********************************************************************************************/
+    private void getUserSeconds(String userSeconds){
+        String seconds = userSeconds.substring(0,2);
+        userSecondsNumber = Integer.parseInt(seconds);
+
     }
 
     /***********************************************************************************************
@@ -115,7 +157,6 @@ public class GameActivity extends AppCompatActivity {
          * @param InMilliSeconds
          ******************************************************************************************/
         @Override
-
         public void onTick(long InMilliSeconds) {
 
             show.setText((InMilliSeconds/1000 + ""));
@@ -145,6 +186,8 @@ public class GameActivity extends AppCompatActivity {
         etUserGuess = (EditText) findViewById(R.id.et_user_guess);
         tvClue = (TextView) findViewById(R.id.tv_clue);
         tvScore = (TextView) findViewById(R.id.tv_score);
+        tvUserLastAnswer = (TextView)findViewById(R.id.tv_user_last_answer);
+
 
         // Read from shared preferences
         SharedPreferences prefs = getSharedPreferences(MARCOS_SHARED_PREFERENCES, MODE_PRIVATE);
@@ -169,24 +212,30 @@ public class GameActivity extends AppCompatActivity {
 
         Random rn = new Random();
         solution = rn.nextInt(Math.abs(userNum)) ;
-        score = 100;
+
+
 
     }
+
+
+
 
     /***********************************************************************************************
      * Method to give the answer an the clue
      * @param view
      **********************************************************************************************/
     public void play(View view) {
+        String lastAnswer = etUserGuess.getText().toString();
+        tvUserLastAnswer.setText(userName + " " + getString(R.string.last_answer)+" "+lastAnswer);
         if (etUserGuess.getText().toString().equals("")) {
-            etUserGuess.setError("Enter a number");
+            etUserGuess.setError(getString(R.string.error_not_number));
         } else {
             int userGuess = Integer.parseInt(etUserGuess.getText().toString());
             int absUserGuess = Math.abs(userGuess - solution);
             if (userGuess == solution) {
                 stop();
                 tvClue.setText
-                  (getString(R.string.text_congratulation) + userName + getString(R.string.emoji));
+                  (getString(R.string.text_congratulation) + userName + " "+getString(R.string.emoji));
                 tvScore.setText
                         (getString(R.string.text_userGuess_is_the_same_solution)+ " " + score);
                 InputMethodManager imm =
@@ -215,7 +264,7 @@ public class GameActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(etUserGuess.getWindowToken(), 0);
 
             }
-
+            etUserGuess.setText("");
         }
 
     }

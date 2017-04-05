@@ -8,7 +8,12 @@
     <string name="et_text_num">Introduce el número</string>
     <string name="error_not_name">"Introduce tu nombre"</string>
     <string name="error_not_main_number">"Introduce un número"</string>
-
+    <string name="user_seconds">Elige la dificultad y el tiempo</string>
+    <string-array name="seconds">
+        <item>50s Fácil</item>
+        <item>40s Medio</item>
+        <item>30s Difícil</item>
+    </string-array>
 
     <!--Activity game-->
     <string name="et_text_hint">Tu respuesta</string>
@@ -16,6 +21,7 @@
     <string name="btn_restart_text">Reiniciar</string>
     <string name="btn_home_text">Inicio</string>
     <string name="error_not_number">"Introduce un número"</string>
+    <string name="last_answer">Tu anterior respuesta:</string>
         <!--toast-->
         <string name="text_toast">"Empezando un nuevo juego"</string>
 

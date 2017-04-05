@@ -10,6 +10,12 @@
     <string name="et_text_num">Enter your num</string>
     <string name="error_not_name">"Enter your name"</string>
     <string name="error_not_main_number">"Enter a number"</string>
+    <string name="user_seconds">Choose the dificult and the time</string>
+    <string-array name="seconds">
+        <item>30s Hard</item>
+        <item>40s Medium</item>
+        <item>50s Easy</item>
+    </string-array>
 
 
 
@@ -19,7 +25,7 @@
     <string name="btn_restart_text">Restart</string>
     <string name="btn_home_text">Home</string>
     <string name="error_not_number">"Enter a number"</string>
-
+    <string name="last_answer">Your last answer:</string>
         <!--toast-->
         <string name="text_toast">"Starting a new game"</string>
 
