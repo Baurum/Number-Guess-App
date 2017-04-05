@@ -28,7 +28,6 @@ import java.util.Scanner;
 
 
 public class GameActivity extends AppCompatActivity {
-
     public static final String MARCOS_SHARED_PREFERENCES = "MarcosSharedPreferences";
     private Context mContext;
     private String userName;
@@ -41,10 +40,10 @@ public class GameActivity extends AppCompatActivity {
     private int top3;
     private int top4;
     private int top5;
-//    private ArrayList<Integer> topScore;
+    //private ArrayList<Integer> topScore;
     private int solution;
     private int score;
-//    Top scores
+    //Top scores
     String top1string;
     String top2string;
     String top3string;
@@ -57,15 +56,12 @@ public class GameActivity extends AppCompatActivity {
     CountDownT timer;
     private long startPauseTime;
     private long pauseTime = 0L;
-
     //User second
     private int userSecondsNumber;
     private String userSecond;
-
     //User dificult
     private String userDificult;
-
-    //last answe
+    //last answer
     private TextView tvUserLastAnswer;
 
 
@@ -89,7 +85,6 @@ public class GameActivity extends AppCompatActivity {
         start();
     }
 
-
     /***********************************************************************************************
      * Method to get the user dificult
      **********************************************************************************************/
@@ -97,13 +92,13 @@ public class GameActivity extends AppCompatActivity {
         String dificult = userDificult.substring(0,2);
 
         if (dificult.equals("30")){
-            score =  1000;
+            score =  500;
         }
         if (dificult.equals("40")){
-            score = 500;
+            score = 400;
         }
         if (dificult.equals("50")){
-            score = 250;
+            score = 300;
         }
     }
 
@@ -113,7 +108,6 @@ public class GameActivity extends AppCompatActivity {
     private void getUserSeconds(String userSeconds){
         String seconds = userSeconds.substring(0,2);
         userSecondsNumber = Integer.parseInt(seconds);
-
     }
 
     /***********************************************************************************************
@@ -187,8 +181,6 @@ public class GameActivity extends AppCompatActivity {
         tvClue = (TextView) findViewById(R.id.tv_clue);
         tvScore = (TextView) findViewById(R.id.tv_score);
         tvUserLastAnswer = (TextView)findViewById(R.id.tv_user_last_answer);
-
-
         // Read from shared preferences
         SharedPreferences prefs = getSharedPreferences(MARCOS_SHARED_PREFERENCES, MODE_PRIVATE);
 
@@ -212,13 +204,7 @@ public class GameActivity extends AppCompatActivity {
 
         Random rn = new Random();
         solution = rn.nextInt(Math.abs(userNum)) ;
-
-
-
     }
-
-
-
 
     /***********************************************************************************************
      * Method to give the answer an the clue
@@ -262,7 +248,6 @@ public class GameActivity extends AppCompatActivity {
                 InputMethodManager imm =
                         (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(etUserGuess.getWindowToken(), 0);
-
             }
             etUserGuess.setText("");
         }
@@ -276,7 +261,7 @@ public class GameActivity extends AppCompatActivity {
     public void restart(View view){
         Random rn = new Random();
         solution = rn.nextInt(userNum);
-        score = 100;
+
         etUserGuess.setText("");
         tvClue.setText("");
         tvScore.setText("");
@@ -358,7 +343,5 @@ public class GameActivity extends AppCompatActivity {
             top5string = userName + ": " + String.valueOf(top5);
         }
         editor.apply();
-
     }
-
 }

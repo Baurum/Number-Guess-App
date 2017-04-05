@@ -33,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
         initApp();
         this.spUserSeconds = (Spinner)    findViewById(R.id.spinner_time);
         loadUserSecords();
-
     }
-
 
     /***********************************************************************************************
      * Method to init the app
@@ -44,14 +42,11 @@ public class MainActivity extends AppCompatActivity {
         mContext = this;
         etName = (EditText) findViewById(R.id.et_user_name);
         etNum = (EditText) findViewById(R.id.et_user_num);
-
     }
-
 
     /***********************************************************************************************
      * Method array adapter
      **********************************************************************************************/
-
     private void loadUserSecords(){
         final ArrayAdapter<CharSequence> adapter =
                 ArrayAdapter.createFromResource
@@ -85,9 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     /***********************************************************************************************
@@ -138,6 +130,5 @@ public class MainActivity extends AppCompatActivity {
         Intent ii = new Intent(mContext, LeaderboardActivity.class);
         startActivity(ii);
     }
-
 }
 

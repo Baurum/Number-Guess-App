@@ -23,7 +23,6 @@ public class LeaderboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
         initApp();
-
     }
 
     /***********************************************************************************************
@@ -50,8 +49,5 @@ public class LeaderboardActivity extends AppCompatActivity {
         tvTop3.setText(top3string);
         tvTop4.setText(top4string);
         tvTop5.setText(top5string);
-
-
-
     }
 }
