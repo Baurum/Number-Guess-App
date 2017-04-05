@@ -261,7 +261,7 @@ public class GameActivity extends AppCompatActivity {
     public void restart(View view){
         Random rn = new Random();
         solution = rn.nextInt(userNum);
-
+        tvUserLastAnswer.setText("");
         etUserGuess.setText("");
         tvClue.setText("");
         tvScore.setText("");
